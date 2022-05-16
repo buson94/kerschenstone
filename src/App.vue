@@ -5,15 +5,7 @@
     Eine vor {{new Date().getFullYear()-founded}} Jahren gegründete Pop/Rock-Band aus {{hometown}}!
     <h2>Social Media Profile</h2>
     <div id="socials_row">
-      <div id="socials_col" v-for="social in socials" :key="social.id">
-        <!-- Brauchen 100 Subs auf YouTube um eine Custom-URL erstellen zu können, dann kann man sich auch diesen Teil sparen -->
-        <a v-if="social.name == 'Youtube'" href="https://www.youtube.com/channel/UCFv7qxKxMObgNyvFpEq_sTg" target="_blank">
-          <img id="social_img" v-bind:alt="social.name + ' logo'" src="./assets/Youtube.svg">
-        </a>
-        <a v-else v-bind:href="'https://' + social.name + '.com/' + name" target="_blank">
-          <img id="social_img" v-bind:alt="social.name + ' logo'" :src="require('./assets/' + social.name + '.svg')">
-        </a>
-      </div>
+      <SocialLinks />
     </div>
     <h2>Direkter Kontakt</h2>
     <address>
@@ -25,20 +17,18 @@
 </template>
 
 <script>
+import SocialLinks from "./components/SocialLinks.vue"
 export default {
-  name: 'App',
-  data: () =>({
-    name: 'Kerschenstone',
-    founded: 2011,
-    hometown: 'Delmenhorst',
-    socials: [
-      {id: 1, name: "Twitter"},
-      {id: 2, name: "Instagram"},
-      {id: 3, name: "Soundcloud"},
-      {id: 4, name: "Youtube"},
-      {id: 5, name: "Facebook"}
-    ]
-  })
+    name: "App",
+    data: () => ({
+        name: "Kerschenstone",
+        founded: 2011,
+        hometown: "Delmenhorst",
+        components: {
+            SocialLinks
+        }
+    }),
+    components: { SocialLinks }
 }
 </script>
 
@@ -74,14 +64,5 @@ a{
   padding: 0;
   display: flex;
   flex: 1;
-}
-#socials_col{
-  text-align: center;
-  font-size: 1.4em;
-  margin: 8px 0 8px 0;
-}
-#social_img{
-  width: 120px;
-  margin: auto 10px;
 }
 </style>
