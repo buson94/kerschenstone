@@ -5,7 +5,7 @@
     Eine vor {{new Date().getFullYear()-founded}} Jahren gegründete Pop/Rock-Band aus {{hometown}}!
     <h2>Social Media Profile</h2>
     <div id="socials_row">
-      <SocialLinks />
+      <SocialLinks :bandName="name" />
     </div>
     <h2>Direkter Kontakt</h2>
     <address>
